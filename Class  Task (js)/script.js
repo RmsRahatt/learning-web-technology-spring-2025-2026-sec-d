@@ -32,3 +32,25 @@ function test() {
 
   console.log(div.style.left);
 }
+
+let move = document.getElementById("btn1");
+move.addEventListener("click", () => {
+  let d2 = document.getElementById("d2");
+  let count = 0;
+
+  let interval = setInterval(() => {
+    if (count > 50) {
+      clearInterval(interval);
+    } else {
+      let current = window.getComputedStyle(d2).left;
+
+      if (parseInt(current) == 0) {
+        d2.style.left = "10px";
+      } else {
+        current = parseInt(current) + 10 + "px";
+        d2.style.left = current;
+      }
+    }
+    count++;
+  }, 100);
+});
